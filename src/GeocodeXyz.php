@@ -14,7 +14,7 @@ use Geocoder\Model\AddressCollection;
 use Geocoder\Provider\Provider;
 use Geocoder\Query\GeocodeQuery;
 use Geocoder\Query\ReverseQuery;
-use Http\Client\HttpClient;
+use Psr\Http\Client\ClientInterface;
 
 final class GeocodeXyz extends AbstractHttpProvider implements Provider
 {
@@ -93,7 +93,7 @@ final class GeocodeXyz extends AbstractHttpProvider implements Provider
         return 'geocodexyz';
     }
 
-    public function __construct(HttpClient $client, array $options = [])
+    public function __construct(ClientInterface $client, array $options = [])
     {
         $mergedOptions = array_merge(self::DEFAULT_OPTIONS, $options);
         $this->validateOptions($mergedOptions);
